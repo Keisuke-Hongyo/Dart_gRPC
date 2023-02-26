@@ -15,6 +15,8 @@ Future<void> main() async {
 
   // クライアントの用意（クライアントスタブと呼ばれる）
   final client = HelloClient(channel);
+
+  // サーバ側の処理を呼出
   callHello d = callHello();
   d.hello = "ssss";
 
