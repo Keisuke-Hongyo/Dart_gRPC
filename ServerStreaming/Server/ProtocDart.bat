@@ -1,0 +1,1 @@
+protoc -I gRPC/ gRPC/hello.proto --dart_out=grpc:gRPC
