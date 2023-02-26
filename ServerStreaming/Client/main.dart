@@ -2,15 +2,6 @@ import 'package:grpc/grpc.dart';
 
 import 'gRPC/hello.pbgrpc.dart';
 
-// async* と yield を使ってリクエストの Stream を作る
-Stream<callHello> requestStream() async* {
-  List<String> name =["aaa","bbb","ccc","ddd"];
-
-  for(String s in name){
-    yield callHello()..hello= s;
-  }
-}
-
 Future<void> main() async {
   // エンドポイントへのチャンネルを用意
   final channel = ClientChannel(
@@ -28,13 +19,16 @@ Future<void> main() async {
   d.hello = "ssss";
 
   try {
+    // サーバからのレスポンスを受け取る
     await for(var res in client.sayHelllo(d)){
       print(res.response);
     }
   } catch(e){
+    // 例外処理
     print('Caught error: $e');
   }
   finally{
+    // チャンネルのクローズ処理
     await channel.shutdown();
   }
 }
