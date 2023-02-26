@@ -1,0 +1,3 @@
+# Dart gRPC テストプログラム
+Dart用gRPCテストプログラムです。
+Unary,ServerStreaming,ClientStreaming,BidirectionalStreamingの４つのサンプルがあります。
